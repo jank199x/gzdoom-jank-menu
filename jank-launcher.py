@@ -36,11 +36,11 @@ def launch(configfile):
 
     doom_dir = os.getcwd()
 
-    iwad_path = f"{doom_dir}/iwads/{game_iwad}"
-    save_path = f"{doom_dir}/savefiles/{game_name}"
-    config_path = f"{doom_dir}/configfiles/{zdoom_configfile}"
-    pwad_path = [f"{doom_dir}/pwads/{pwad}" for pwad in game_pwad.split()] if game_pwad else None
-    addon_paths = [f"{doom_dir}/addons/{addon}" for addon in addons.split()] if addons else None
+    iwad_path = f"{doom_dir}/{config['dirnames']['iwads']}/{game_iwad}"
+    save_path = f"{doom_dir}/{config['dirnames']['savefiles']}/{game_name}"
+    config_path = f"{doom_dir}/{config['dirnames']['configfiles']}/{zdoom_configfile}"
+    pwad_path = [f"{doom_dir}/{config['dirnames']['pwads']}/{pwad}" for pwad in game_pwad.split()] if game_pwad else None
+    addon_paths = [f"{doom_dir}/{config['dirnames']['addons']}/{addon}" for addon in addons.split()] if addons else None
 
     launch_string = "gzdoom"
     launch_string += f" -iwad {iwad_path}"
