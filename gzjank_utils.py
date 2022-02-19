@@ -1,30 +1,25 @@
-import configparser
+from configparser import ConfigParser
 
 
-def makelaunchstring(cwd: str, defaults: str, configfile: str):
-    config = configparser.ConfigParser()
+def makelaunchstring(cwd: str, configfile: ConfigParser):
 
-    config.read(defaults)
+    default_addons = configfile["default"]["addons"]
+    default_zdoom_configfile = configfile["default"]["config"]
 
-    default_addons = config["default"]["addons"]
-    default_zdoom_configfile = config["default"]["config"]
-
-    config.read(configfile)
-
-    game_name = config["zdoom"]["name"]
-    game_iwad = config["zdoom"]["iwad"]
-    game_pwad = config["zdoom"].get("pwad")  # pwad(s) are optional
-    addons = config["zdoom"].get("addons")  # addons are optional
-    zdoom_configfile = config["zdoom"].get("config")
+    game_name = configfile["zdoom"]["name"]
+    game_iwad = configfile["zdoom"]["iwad"]
+    game_pwad = configfile["zdoom"].get("pwad")  # pwad(s) are optional
+    addons = configfile["zdoom"].get("addons")  # addons are optional
+    zdoom_configfile = configfile["zdoom"].get("config")
 
     addons = default_addons if addons == "default" else addons
     zdoom_configfile = default_zdoom_configfile if not zdoom_configfile else zdoom_configfile
 
-    iwad_path = f"{cwd}/{config['dirnames']['iwads']}/{game_iwad}"
-    save_path = f"{cwd}/{config['dirnames']['savefiles']}/{game_name}"
-    config_path = f"{cwd}/{config['dirnames']['configfiles']}/{zdoom_configfile}"
-    pwad_path = [f"{cwd}/{config['dirnames']['pwads']}/{pwad}" for pwad in game_pwad.split()] if game_pwad else None
-    addon_paths = [f"{cwd}/{config['dirnames']['addons']}/{addon}" for addon in addons.split()] if addons else None
+    iwad_path = f"{cwd}/{configfile['dirnames']['iwads']}/{game_iwad}"
+    save_path = f"{cwd}/{configfile['dirnames']['savefiles']}/{game_name}"
+    config_path = f"{cwd}/{configfile['dirnames']['configfiles']}/{zdoom_configfile}"
+    pwad_path = [f"{cwd}/{configfile['dirnames']['pwads']}/{pwad}" for pwad in game_pwad.split()] if game_pwad else None
+    addon_paths = [f"{cwd}/{configfile['dirnames']['addons']}/{addon}" for addon in addons.split()] if addons else None
 
     launch_string = "gzdoom"
     launch_string += f" -iwad {iwad_path}"
