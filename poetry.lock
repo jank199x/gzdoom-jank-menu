@@ -89,18 +89,24 @@ python-versions = ">=3.6.2"
 wcwidth = "*"
 
 [[package]]
-name = "pygments"
-version = "2.11.2"
-description = "Pygments is a syntax highlighting package written in Python."
+name = "questionary"
+version = "1.10.0"
+description = "Python library to build pretty command line user prompts ⭐️"
 category = "main"
 optional = false
-python-versions = ">=3.5"
+python-versions = ">=3.6,<4.0"
+
+[package.dependencies]
+prompt_toolkit = ">=2.0,<4.0"
+
+[package.extras]
+docs = ["Sphinx (>=3.3,<4.0)", "sphinx-rtd-theme (>=0.5.0,<0.6.0)", "sphinx-autobuild (>=2020.9.1,<2021.0.0)", "sphinx-copybutton (>=0.3.1,<0.4.0)", "sphinx-autodoc-typehints (>=1.11.1,<2.0.0)"]
 
 [[package]]
 name = "regex"
 version = "2021.8.3"
 description = "Alternative regular expression module, to replace re."
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 
@@ -120,23 +126,10 @@ category = "main"
 optional = false
 python-versions = "*"
 
-[[package]]
-name = "whaaaaat"
-version = "0.5.2"
-description = "Collection of common interactive command line user interfaces, based on Inquirer.js"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-prompt_toolkit = ">=1.0.14"
-Pygments = ">=2.2.0"
-regex = ">=2016.11.21"
-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "06f9396a425d3b2580ea0da3797aa1ca268b6a362ae3023bf60781641284fd19"
+content-hash = "dfddf326f083e569f76b4c0ace9ddbfb7a69292f969d718ca4c4cb657dfd4e79"
 
 [metadata.files]
 appdirs = [
@@ -171,9 +164,9 @@ prompt-toolkit = [
     {file = "prompt_toolkit-3.0.28-py3-none-any.whl", hash = "sha256:30129d870dcb0b3b6a53efdc9d0a83ea96162ffd28ffe077e94215b233dc670c"},
     {file = "prompt_toolkit-3.0.28.tar.gz", hash = "sha256:9f1cd16b1e86c2968f2519d7fb31dd9d669916f515612c269d14e9ed52b51650"},
 ]
-pygments = [
-    {file = "Pygments-2.11.2-py3-none-any.whl", hash = "sha256:44238f1b60a76d78fc8ca0528ee429702aae011c265fe6a8dd8b63049ae41c65"},
-    {file = "Pygments-2.11.2.tar.gz", hash = "sha256:4e426f72023d88d03b2fa258de560726ce890ff3b630f88c21cbb8b2503b8c6a"},
+questionary = [
+    {file = "questionary-1.10.0-py3-none-any.whl", hash = "sha256:fecfcc8cca110fda9d561cb83f1e97ecbb93c613ff857f655818839dac74ce90"},
+    {file = "questionary-1.10.0.tar.gz", hash = "sha256:600d3aefecce26d48d97eee936fdb66e4bc27f934c3ab6dd1e292c4f43946d90"},
 ]
 regex = [
     {file = "regex-2021.8.3-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:8764a78c5464ac6bde91a8c87dd718c27c1cabb7ed2b4beaf36d3e8e390567f9"},
@@ -217,7 +210,4 @@ tomli = [
 wcwidth = [
     {file = "wcwidth-0.2.5-py2.py3-none-any.whl", hash = "sha256:beb4802a9cebb9144e99086eff703a642a13d6a0052920003a230f3294bbe784"},
     {file = "wcwidth-0.2.5.tar.gz", hash = "sha256:c4d647b99872929fdb7bdcaa4fbe7f01413ed3d98077df798530e5b04f116c83"},
-]
-whaaaaat = [
-    {file = "whaaaaat-0.5.2.tar.gz", hash = "sha256:cda3c149dc3e6dacdbc1f6d445ee8005c9fc540aa7d8b00c1553a6f7e37e917e"},
 ]
