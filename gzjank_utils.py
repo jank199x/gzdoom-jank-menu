@@ -1,5 +1,11 @@
 from configparser import ConfigParser
+from glob import glob
 
+def launchermap(dir: str):
+    launchers = glob(f"{dir}/*.ini")
+    prefix = f"{dir}/"
+    postfix = ".ini"
+    return {launcher[len(prefix):-len(postfix)]: launcher for launcher in launchers}
 
 def makelaunchstring(cwd: str, configfile: ConfigParser):
 
