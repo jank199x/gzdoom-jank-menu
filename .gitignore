@@ -7,3 +7,4 @@ configfiles
 launchers
 *.ini
 *.deb
+*.pyc
