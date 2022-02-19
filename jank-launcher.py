@@ -5,7 +5,7 @@ import os
 
 import click
 
-from gzjank_utils import makelaunchstring
+import gzjank_utils as util
 
 DEFAULTS_CONFIG = "jank-launcher.ini"
 
@@ -17,12 +17,13 @@ def launch(configfile):
     \b
     Runs a WAD specified in CONFIGFILE via gzdoom
     """
+    cwd=os.getcwd()
     config = configparser.ConfigParser()
-    config.read(DEFAULTS_CONFIG)
+    config.read(f"{cwd}/{DEFAULTS_CONFIG}")
     config.read(configfile)
 
-    launch_string = makelaunchstring(
-        cwd=os.getcwd(),
+    launch_string = util.makelaunchstring(
+        cwd=cwd,
         configfile=config,
     )
 
