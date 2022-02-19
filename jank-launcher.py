@@ -17,7 +17,7 @@ def launch(configfile):
     \b
     Runs a WAD specified in CONFIGFILE via gzdoom
     """
-    cwd=os.getcwd()
+    cwd = os.getcwd()
     config = configparser.ConfigParser()
     config.read(f"{cwd}/{DEFAULTS_CONFIG}")
     config.read(configfile)
