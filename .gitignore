@@ -3,6 +3,7 @@ iwads
 addons
 savefiles
 .vscode
-confifiles
+configfiles
 launchers
 *.ini
+*.deb
