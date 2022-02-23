@@ -2,9 +2,10 @@
 line-length = 120
 
 [tool.poetry]
-name = "jank-doom-launcher"
-version = "0.1.0"
-description = "Launch script for gzdoom"
+name = "gzjank-doom-launcher"
+version = "0.2.0"
+description = "Minimalistic launcher for gzdoom"
+
 authors = ["Jank <jank@panichev.xyz>"]
 
 [tool.poetry.dependencies]
