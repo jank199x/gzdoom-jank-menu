@@ -2,6 +2,7 @@
 *.deb
 *.ini
 *.pyc
+*.spec
 addons
 build
 configfiles
