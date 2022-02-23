@@ -5,7 +5,7 @@ import os
 
 import questionary
 
-import gzjank_utils as util
+import jank
 
 DEFAULTS_CONFIG = "jank-launcher.ini"
 
@@ -17,7 +17,7 @@ def launch():
     config.read(f"{cwd}/{DEFAULTS_CONFIG}")
 
     launcherdir = f"{cwd}/{config['dirnames']['launchers']}"
-    launchermap = util.launchermap(launcherdir)
+    launchermap = jank.launchermap(launcherdir)
     choices = sorted(launchermap.keys())
 
     selection = questionary.select(
@@ -26,7 +26,7 @@ def launch():
     ).ask()
 
     config.read(launchermap[selection])
-    launch_string = util.makelaunchstring(
+    launch_string = jank.makelaunchstring(
         cwd=os.getcwd(),
         configfile=config,
     )

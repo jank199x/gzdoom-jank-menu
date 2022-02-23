@@ -1,4 +1,4 @@
 menu : 
-	pyinstaller gzjank-menu.py --onefile -c
-click : 
-	pyinstaller jank-launcher.py --onefile -c
+	pyinstaller src/menu.py --onefile -n gzjank-menu
+cli : 
+	pyinstaller src/cli.py --onefile -n gzjank-cli

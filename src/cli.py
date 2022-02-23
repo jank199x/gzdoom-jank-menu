@@ -5,7 +5,7 @@ import os
 
 import click
 
-import gzjank_utils as util
+import jank
 
 DEFAULTS_CONFIG = "jank-launcher.ini"
 
@@ -22,7 +22,7 @@ def launch(configfile):
     config.read(f"{cwd}/{DEFAULTS_CONFIG}")
     config.read(configfile)
 
-    launch_string = util.makelaunchstring(
+    launch_string = jank.makelaunchstring(
         cwd=cwd,
         configfile=config,
     )
