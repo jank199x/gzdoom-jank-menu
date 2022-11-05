@@ -20,7 +20,7 @@ def makelaunchstring(cwd: str, configfile: ConfigParser):
     addons = configfile["zdoom"].get("addons")  # addons are optional
     zdoom_configfile = configfile["zdoom"].get("config")
 
-    addons = default_addons if addons == "defaults" else addons
+    addons = default_addons if addons == "default" else addons
     zdoom_configfile = default_zdoom_configfile if not zdoom_configfile else zdoom_configfile
 
     iwad_path = f"{cwd}/{configfile['dirnames']['iwads']}/{game_iwad}"
