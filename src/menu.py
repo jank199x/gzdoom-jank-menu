@@ -2,13 +2,14 @@
 
 import configparser
 import os
+import sys
 
 import questionary
 
 import jank
 
 DEFAULTS_CONFIG = "defaults.ini"
-PATHS_CONFIG="paths.ini"
+PATHS_CONFIG = "paths.ini"
 
 
 def launch():
@@ -19,9 +20,9 @@ def launch():
     config.read(f"{cwd}/{PATHS_CONFIG}")
     config.read(f"{cwd}/{DEFAULTS_CONFIG}")
 
-    rootdir = config['paths']['root']
+    rootdir = config["paths"]["root"]
     launcherdir = f"{rootdir}/{config['dirnames']['launchers']}"
-    
+
     launchermap = jank.launchermap(launcherdir)
     choices = sorted(launchermap.keys())
 
@@ -29,6 +30,9 @@ def launch():
         "Which Doom WAD?",
         choices=choices,
     ).ask()
+
+    if not selection:
+        sys.exit()
 
     config.read(launchermap[selection])
     launch_string = jank.makelaunchstring(
