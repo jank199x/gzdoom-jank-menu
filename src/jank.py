@@ -11,8 +11,8 @@ def launchermap(dir: str):
 
 def makelaunchstring(cwd: str, configfile: ConfigParser):
 
-    default_addons = configfile["default"]["addons"]
-    default_zdoom_configfile = configfile["default"]["config"]
+    default_addons = configfile["defaults"]["addons"]
+    default_zdoom_configfile = configfile["defaults"]["config"]
 
     game_name = configfile["zdoom"]["name"]
     game_iwad = configfile["zdoom"]["iwad"]
@@ -20,7 +20,7 @@ def makelaunchstring(cwd: str, configfile: ConfigParser):
     addons = configfile["zdoom"].get("addons")  # addons are optional
     zdoom_configfile = configfile["zdoom"].get("config")
 
-    addons = default_addons if addons == "default" else addons
+    addons = default_addons if addons == "defaults" else addons
     zdoom_configfile = default_zdoom_configfile if not zdoom_configfile else zdoom_configfile
 
     iwad_path = f"{cwd}/{configfile['dirnames']['iwads']}/{game_iwad}"

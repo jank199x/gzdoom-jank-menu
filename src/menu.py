@@ -7,16 +7,21 @@ import questionary
 
 import jank
 
-DEFAULTS_CONFIG = "jank-launcher.ini"
+DEFAULTS_CONFIG = "defaults.ini"
+PATHS_CONFIG="paths.ini"
 
 
 def launch():
     cwd = os.getcwd()
 
     config = configparser.ConfigParser()
+
+    config.read(f"{cwd}/{PATHS_CONFIG}")
     config.read(f"{cwd}/{DEFAULTS_CONFIG}")
 
-    launcherdir = f"{cwd}/{config['dirnames']['launchers']}"
+    rootdir = config['paths']['root']
+    launcherdir = f"{rootdir}/{config['dirnames']['launchers']}"
+    
     launchermap = jank.launchermap(launcherdir)
     choices = sorted(launchermap.keys())
 
@@ -27,7 +32,7 @@ def launch():
 
     config.read(launchermap[selection])
     launch_string = jank.makelaunchstring(
-        cwd=os.getcwd(),
+        cwd=rootdir,
         configfile=config,
     )
 

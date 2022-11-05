@@ -1,11 +1,10 @@
 [tool.black]
-line-length = 120
+line-length = 119
 
 [tool.poetry]
 name = "gzjank-doom-launcher"
-version = "0.2.0"
+version = "0.3.0"
 description = "Minimalistic launcher for gzdoom"
-
 authors = ["Jank <jank@panichev.xyz>"]
 
 [tool.poetry.dependencies]
